@@ -148,6 +148,9 @@ body {
     font-size: 1.6rem;
 }
 
+a {
+    text-decoration: none;
+}
 
 .poppins-regular {
     font-family: "Poppins", serif;
@@ -177,4 +180,25 @@ body {
     font-family: "Poppins", serif;
     font-weight: 200;
     font-style: italic;
+}
+
+.sora-bold {
+    font-family: "Sora", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.sora-bold-x2 {
+    font-family: "Sora", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.sora-normal {
+    font-family: "Sora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
 }
