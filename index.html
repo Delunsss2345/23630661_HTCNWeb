@@ -12,16 +12,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Font Poppins -->
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,100;1,200&display=swap"
       rel="stylesheet"
-    />
+    /> -->
 
     <!-- Font Sora-->
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
       rel="stylesheet"
-    />
+    /> -->
+    <script src="./jquery-3.7.1.min.map"></script>
+
     <script
       src="https://code.jquery.com/jquery-3.7.1.js"
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -353,9 +355,39 @@
           </div>
         </div>
       </div>
+      <!-- Product -->
+
+      <div class="main_content--product">
+        <div class="container">
+          <div class="main_content--product-group">
+            <h2 class="sora-bold-x2">Recommended For You</h2>
+            <span class="sora-bold">~ Pet Store ~</span>
+            <div id="main_content--product-list">
+              <div class="row"></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="button_extra-action left">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+              d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+            />
+          </svg>
+        </button>
+
+        <button class="button_extra-action right">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+              d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"
+            />
+          </svg>
+        </button>
+      </div>
     </main>
     <div id="footer"></div>
   </body>
-
-  <script src="../javascripts/js.js"></script>
+  <script src="./assets/javascripts/renderProduct.js"></script>
 </html>

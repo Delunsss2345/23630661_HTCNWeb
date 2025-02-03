@@ -142,6 +142,9 @@ table {
 
 html {
     font-size: 62.5%;
+    font-family: "Sora", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 body {
@@ -152,6 +155,66 @@ a {
     text-decoration: none;
 }
 
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../font/Sora/static/Sora-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../font/Sora/static/Sora-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../font/Sora/static/Sora-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../font/Sora/static/Sora-SemiBold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../font/Sora/static/Sora-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../font/Poppins/Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/* Poppins Font Classes */
 .poppins-regular {
     font-family: "Poppins", serif;
     font-weight: 400;
@@ -182,23 +245,33 @@ a {
     font-style: italic;
 }
 
+/* Sora Font Classes */
 .sora-bold {
     font-family: "Sora", serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 700;
     font-style: normal;
 }
 
 .sora-bold-x2 {
     font-family: "Sora", serif;
-    font-optical-sizing: auto;
     font-weight: 800;
+    font-style: normal;
+}
+
+.sora-normal-thin {
+    font-family: "Sora", serif;
+    font-weight: 300;
     font-style: normal;
 }
 
 .sora-normal {
     font-family: "Sora", serif;
-    font-optical-sizing: auto;
     font-weight: 400;
+    font-style: normal;
+}
+
+.sora-normal-x2 {
+    font-family: "Sora", serif;
+    font-weight: 500;
     font-style: normal;
 }
