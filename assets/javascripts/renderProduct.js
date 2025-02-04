@@ -151,6 +151,4 @@ btnLeft.addEventListener("click", () => {
 
 console.log(btnLeft , btnRight) ; 
 
-window.onload = function () {
-    window.resizeTo(screen.width * 0.8, screen.height * 0.8);
-};
+document.body.style.zoom = "80%";

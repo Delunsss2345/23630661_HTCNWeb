@@ -661,7 +661,7 @@ main {
     }
 }
 
-#main_content--product-list{
+#main_content--product-list , .main_content--todays-deal-list{
     display: flex;
     justify-content: center;
     padding-top: 80px;
@@ -687,6 +687,25 @@ main {
         }
     }
 }
+.main_content--todays-deal {
+    padding-bottom: 120px;
+}
+.main_content--todays-deal-list {
+    padding-top: 30px;
+}
+.display_none {
+    display: none;
+}
+
+.main_content--todays-deal-list {
+    .row  {
+        .product-item_btn-group {
+            transform: translate(12%, 50px);
+        }
+    }
+}
+
+
 
 .main_content--product-item:hover {
     .main_content--product-figure {
@@ -695,10 +714,20 @@ main {
             }
     }
 }
+
 .main_content--product-item:hover > .product-item_btn-group {
     visibility : visible;
-    transform: translate(12% ,-12px);
+    transform: translate(12% ,-18px);
     opacity: 1;
+}
+
+.main_content--todays-deal-list {
+    .main_content--product-item:hover > .product-item_btn-group {
+        visibility : visible;
+        transform: translate(12% ,18px);
+        opacity: 1;
+    }
+    
 }
 .product-item_btn-group {
     display: block;
@@ -749,6 +778,7 @@ main {
     color: #0a214f;
     .product-item_name {
         width: 380px;
+        height: 90px;
         padding: 12px 0px;
         transition: color 0.4s;
         &:hover {
@@ -1276,3 +1306,35 @@ main {
         border-left: 1px dashed rgb(204, 204, 204);
     }
 }
+
+.main_content--todays-deal-main {
+    h2 {
+        padding-bottom: 40px;
+        font-size: 4rem;
+        text-align: center;
+    }
+}
+
+.main_content--todays-deal-list-desc {
+    display: flex;
+    padding-bottom: 50px;
+    justify-content: center;
+    gap: 30px;
+    .deal-item-desc {
+        padding: 20px 30px;
+        border-radius: 32px;
+        border: 3px dashed transparent;
+        background-color: #f5f6f8;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        cursor: pointer;
+        transition: background-color 0.34s , border-color 0.34s;
+        span {
+            font-size: 1.6rem;
+        }
+        &.click-deal-desc {
+            border-color: #f58322;
+            background-color: #fff;
+        }
+    }
+}
+

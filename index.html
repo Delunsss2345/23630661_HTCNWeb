@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Document</title>
     <link rel="stylesheet" href="./assets/common/reset.css" />
     <link rel="stylesheet" href="./assets/common/grid.css" />
@@ -461,6 +462,60 @@
       </div>
 
       <!-- Todays Deal -->
+      <div class="main_content--todays-deal">
+        <div class="container">
+          <div class="main_content--todays-deal-main">
+            <h2 class="sora-bold-x2">Today's Best Deal.</h2>
+            <div class="main_content--todays-deal-list-desc">
+              <button
+                onclick="clickButton(1)"
+                class="deal-item-desc click-deal-desc"
+              >
+                <span class="sora-normal-x2">Latest Products</span>
+              </button>
+              <button onclick="clickButton(2)" class="deal-item-desc">
+                <span class="sora-normal-x2">Top Rating</span>
+              </button>
+              <button onclick="clickButton(3)" class="deal-item-desc">
+                <span class="sora-normal-x2">Best Seller</span>
+              </button>
+              <button onclick="clickButton(4)" class="deal-item-desc">
+                <span class="sora-normal-x2">Feature Products</span>
+              </button>
+              <button onclick="clickButton(5)" class="deal-item-desc">
+                <span class="sora-normal-x2">All Item</span>
+              </button>
+            </div>
+
+            <div id="main_content--todays-deal-group-list">
+              <!-- Deal List Here -->
+              <div class="main_content--todays-deal-list latest_product">
+                <div class="row"></div>
+              </div>
+              <div
+                class="main_content--todays-deal-list display_none top_rating"
+              >
+                <div class="row"></div>
+              </div>
+              <div
+                class="main_content--todays-deal-list display_none best_seller"
+              >
+                <div class="row"></div>
+              </div>
+              <div
+                class="main_content--todays-deal-list display_none feature_products"
+              >
+                <div class="row"></div>
+              </div>
+              <div
+                class="main_content--todays-deal-list display_none all_items"
+              >
+                <div class="row"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Brands Trusted -->
       <div class="main_content--brands">
@@ -503,4 +558,5 @@
     <div id="footer"></div>
   </body>
   <script src="./assets/javascripts/renderProduct.js"></script>
+  <script src="./assets/javascripts/js.js"></script>
 </html>
