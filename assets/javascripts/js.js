@@ -250,4 +250,89 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
 
+const dataBlogs = [
+    {
+      id: 1,
+      title: "How to Choose the Right Bully Stick for Your Dog",
+      creator: "John Doe",
+      date: "02-05-2025",
+      desc: "Choosing the right bully stick for your dog depends on factors like size, chewing habits, and ingredients. This guide will help you make the best choice.",
+      img: "../assets/img/blog/chotrang.jpg"
+    },
+    {
+      id: 2,
+      title: "Top 5 Healthy Treats for Your Dog",
+      creator: "Emma Smith",
+      date: "01-30-2025",
+      desc: "Looking for healthy treats for your furry friend? Here are five nutritious and delicious treats your dog will love!",
+      img: "../assets/img/blog/chocute.jpg"
+    },
+    {
+      id: 3,
+      title: "Best Chew Toys to Keep Your Dog Entertained",
+      creator: "Michael Brown",
+      date: "01-25-2025",
+      desc: "Dogs love to chew! Find out which chew toys are safest and most engaging for your pup.",
+     img: "../assets/img/blog/chomatxe.jpg"
+    }
+  ];
+  
+const blogContainer = document.querySelector("#main_content--blog-list .row") ; 
 
+const renderBlog = (datas) => {
+  blogContainer.innerHTML = "" ;
+  let blogData = "" ;
+  datas.forEach((data) => {
+      blogData += ` 
+         <div class="col-xl-4">
+                  <div class="main_content--blog-item">
+                    <a>
+                      <img
+                        src="${data.img}"
+                        alt="blog-img"
+                      />
+                    </a>
+
+                    <div class="main_content--blog-item-info">
+                      <div class="user_upload">
+                        <div class="creator">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                            <path
+                              d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"
+                            />
+                          </svg>
+                          <span>By ${data.creator}</span>
+                        </div>
+                        <div class="calendar">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 448 512"
+                          >
+                            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                            <path
+                              d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z"
+                            />
+                          </svg>
+                          <span>June 3</span>
+                        </div>
+                      </div>
+
+                      <h2 class="sora-bold">
+                          ${data.title}
+                      </h2>
+                      <p>
+                          ${data.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      `;
+  }) ;
+  blogContainer.innerHTML = blogData ;  // append blog data to blog container
+}
+
+renderBlog(dataBlogs) ; 
