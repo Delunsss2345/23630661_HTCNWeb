@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up</title>
+    <link rel="stylesheet" href="./assets/common/reset.css" />
+    <link rel="stylesheet" href="./assets/common/grid.css" />
+    <link rel="stylesheet" href="./assets/css/login.css" />
+  </head>
+  <body>
+    <img class="logo_login" src="./assets/img/logo_pro.svg" alt="" />
+
+    <main id="main_login">
+      <div class="main_login--content">
+        <div class="main_login--info">
+          <h2>Welcome To Shop Pet</h2>
+          <span>Looks like you're new here!</span>
+        </div>
+        <form class="form_login" id="loginForm">
+          <div class="form_login--content" id="signUpForm">
+            <input id="fullName" placeholder="Full Name" type="text" />
+            <input id="emailSignUp" placeholder="Email" type="text" />
+            <input id="passwordSignUp" placeholder="Password" type="password" />
+          </div>
+
+          <div class="form_login--content hidden_form" id="loginFormContent">
+            <input
+              id="emailOrUsername"
+              placeholder="Email Or Username"
+              type="text"
+              regex="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|)"
+            />
+            <input id="passwordLogin" placeholder="Password" type="password" />
+          </div>
+
+          <button class="form_login--btn" type="submit">
+            <span>Create Account</span>
+          </button>
+
+          <div class="form_desc">
+            <span class="form_login-click">
+              Already have an account?
+              <a id="form_login--login">Login</a>
+            </span>
+            <span class="form_login-click hidden_form">
+              Don't have an account?
+              <a id="form_login--res">Sign Up</a>
+            </span>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <div class="copyRight">
+      <span>Copyright © 2024 <strong>Huy</strong>. All Rights Reserved.</span>
+    </div>
+  </body>
+  <script src="./assets/javascripts/login.js"></script>
+</html>

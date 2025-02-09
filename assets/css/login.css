@@ -1,0 +1,130 @@
+input {
+    border: none;
+}
+
+.logo_login {
+    position: absolute;
+    top: 30px;
+    left: 80px;
+}
+
+.main_login--content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_login--info {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+
+
+.main_login--info h2 {
+    font-size: 3.6rem;
+    font-weight: 600;
+    color: #0a214f;
+}
+
+.main_login--info span {
+    font-size: 2rem;
+}
+
+.form_login {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-top: 40px;
+}
+
+.form_login--content {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.form_login input {
+    width: 100%;
+    padding: 20px;
+    font-size: 2rem;
+    height: inherit;
+}
+
+.form_login input:focus {
+    outline: none;
+}
+
+.form_login input:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.form_login input:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.form_login input~input {
+    border-top: 1px solid #ccc;
+}
+
+.form_login--btn {
+    margin-top: 30px;
+    padding: 20px 10px;
+    background-color: #f58322;
+    border: none;
+    border-radius: 6px;
+}
+
+.form_login--btn span {
+    font-size: 2rem;
+    color: #fff;
+}
+
+
+.copyRight {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(204, 204, 204, 0.2);
+    padding: 25px;
+
+}
+
+.hidden_form {
+    display: none !important;
+}
+
+.copyRight span strong {
+    font-weight: 600;
+}
+
+.form_desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form_desc>span {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+
+.form_desc>span a {
+    color: #255bc6;
+    text-decoration: underline;
+}

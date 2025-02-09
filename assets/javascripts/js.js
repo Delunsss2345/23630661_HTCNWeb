@@ -17,6 +17,9 @@
 // //     listBanner.style.transition = 'transform 0.5s ease-in-out'; 
 // //     // choices[i].classList.add('active');
 // // }, 1000);
+
+
+
 const listBtn = document.querySelectorAll('.deal-item-desc') ; 
 console.log() ; 
 

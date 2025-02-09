@@ -4,9 +4,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "sass assets/scss/sass.scss assets/css/stytel.css -w"
+    "start": "sass assets/scss/sass.scss assets/css/stytel.css -w"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "aos": "^2.3.4"
+  }
 }
