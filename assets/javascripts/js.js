@@ -260,7 +260,7 @@ const dataBlogs = [
       creator: "John Doe",
       date: "02-05-2025",
       desc: "Choosing the right bully stick for your dog depends on factors like size, chewing habits, and ingredients. This guide will help you make the best choice.",
-      img: "../assets/img/blog/chotrang.jpg"
+      img: "./assets/img/blog/chotrang.jpg"
     },
     {
       id: 2,
@@ -268,7 +268,7 @@ const dataBlogs = [
       creator: "Emma Smith",
       date: "01-30-2025",
       desc: "Looking for healthy treats for your furry friend? Here are five nutritious and delicious treats your dog will love!",
-      img: "../assets/img/blog/chocute.jpg"
+      img: "./assets/img/blog/chocute.jpg"
     },
     {
       id: 3,
@@ -276,7 +276,7 @@ const dataBlogs = [
       creator: "Michael Brown",
       date: "01-25-2025",
       desc: "Dogs love to chew! Find out which chew toys are safest and most engaging for your pup.",
-     img: "../assets/img/blog/chomatxe.jpg"
+     img: "./assets/img/blog/chomatxe.jpg"
     }
   ];
   
