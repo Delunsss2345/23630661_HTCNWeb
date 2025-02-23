@@ -280,16 +280,17 @@ const dataBlogs = [
     }
   ];
   
-const blogContainer = document.querySelector("#main_content--blog-list .row") ; 
+
 
 const renderBlog = (datas) => {
-  blogContainer.innerHTML = "" ;
+  const blogContainer = document.querySelector("#main_content--blog-list .row") ; 
+ 
   let blogData = "" ;
   datas.forEach((data) => {
       blogData += ` 
          <div class="col-xl-4">
                   <div class="main_content--blog-item">
-                    <a>
+                    <a href="./blog_details.html?id=${data.id}">
                       <img
                         src="${data.img}"
                         alt="blog-img"
@@ -335,7 +336,9 @@ const renderBlog = (datas) => {
                 </div>
       `;
   }) ;
-  blogContainer.innerHTML = blogData ;  // append blog data to blog container
+  blogContainer.innerHTML = blogData ; 
 }
 
 renderBlog(dataBlogs) ; 
+
+

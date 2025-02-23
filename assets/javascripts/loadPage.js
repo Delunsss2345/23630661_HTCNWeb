@@ -5,3 +5,5 @@ $(window).on('load' , function () {
     $('#footer').load("./assets/layout/footer.html");
    
 }); 
+
+
