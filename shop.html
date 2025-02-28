@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/common/reset.css" />
+    <link rel="stylesheet" href="./assets/common/grid.css" />
+    <link rel="stylesheet" href="./assets/css/stytel.css" />
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./assets/javascripts/loadPage.js"></script>
+  </head>
+  <body>
+    <div id="header"></div>
+    <main>
+      <div class="primary_nav">
+        <h2>Shop</h2>
+        <div>
+          <a href="./index.html">Home </a>
+          <span>/</span>
+          <a href="./shop.html">Shop</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="shop_container">
+          <div class="main_shop--left">
+            <div class="main_shop--left-category primary_nav--details">
+              <h2>Categories</h2>
+              <div class="main_shop--list-category"></div>
+            </div>
+            <div class="main_shop--left-price primary_nav--details">
+              <h2>Price</h2>
+            </div>
+            <div class="main_shop--left-size primary_nav--details">
+              <h2>Size</h2>
+              <div class="main_shop--list-size"></div>
+            </div>
+            <div class="main_shop--left-brands primary_nav--details">
+              <h2>Brands</h2>
+              <div class="main_shop--list-brands"></div>
+            </div>
+          </div>
+          <div class="main_shop--right">
+            <div class="main_shop--right-header">
+              <span>Showing all results</span>
+              <div class="main_shop--right-sort">
+                <span>Default Sorting</span>
+                <figure>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                      d="M40 48C26.7 48 16 58.7 16 72l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24L40 48zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L192 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zM16 232l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0z"
+                    />
+                  </svg>
+                </figure>
+              </div>
+            </div>
+            <div class="main_shop--right-list-shop">
+              <div class="row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </body>
+  <script src="./assets/javascripts/renderListShop.js"></script>
+</html>

@@ -744,6 +744,37 @@ header {
         }
     }
 }
+.main_shop--right-list-shop {
+    .row {
+        width: 100%;
+        transition:  transform 0.5s;
+        .main_content--product-item {
+            position: relative;
+            padding-bottom: 50px;
+            width: 100%;
+            border-radius: 16px;
+            cursor: pointer;
+            .main_content--product-figure {
+                width: 100%;
+                    img {
+                        border-radius: 16px;
+                        width: 100%;
+                        transition: transform 0.4s;
+                    }
+               
+            }
+        }
+    }
+
+    .product-item_btn-group {
+        transform: translate(17%, 0px);
+    }
+    .main_content--product-item:hover > .product-item_btn-group {
+        visibility : visible;
+        transform: translate(17%, -72px);
+        opacity: 1;
+    }
+}
 .main_content--todays-deal {
     padding-bottom: 120px;
 }
@@ -786,6 +817,8 @@ header {
     }
     
 }
+
+
 .product-item_btn-group {
     display: block;
     position: absolute;
@@ -1693,7 +1726,7 @@ header {
 }
 
 
-.header__blog {
+.header__blog , .primary_nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1730,7 +1763,7 @@ header {
 
 }
 
-.main_blog--left-primary {
+.main_blog--left-primary , .primary_nav--details{
     padding: 20px;
     border:  1px dashed rgb(204, 204, 204 , 0.5);
     border-radius: 16px;
@@ -2054,5 +2087,62 @@ header {
             }
         }
         
+    }
+}
+
+.shop_container {
+    display: flex;
+    gap: 60px;
+}
+.main_shop--left {
+    flex: 1;
+}
+.main_shop--right {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.main_shop--list-category,.main_shop--list-size,.main_shop--list-brands {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item_shop--group {
+    display: flex;
+    gap: 10px;
+}
+
+.main_shop--right-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span {
+        font-size: 1.7rem;
+    }
+}
+
+
+.main_shop--right-sort {
+    display: flex;
+    padding: 5px 20px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 32px;
+    border: 1px solid rgb(0, 32, 91 , 0.1);
+    > span {
+        font-weight: 500;
+    }
+    > figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        svg {
+            padding: 8px;
+            width: 100%;
+        }
     }
 }
