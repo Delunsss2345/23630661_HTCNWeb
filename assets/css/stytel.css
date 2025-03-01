@@ -1849,12 +1849,16 @@ header {
 }
 
 .main_shop--right-sort {
+  position: relative;
   display: flex;
   padding: 5px 20px;
   align-items: center;
   gap: 10px;
   border-radius: 32px;
   border: 1px solid rgba(0, 32, 91, 0.1);
+  user-select: none;
+  transition: background-color 0.4s, color 0.4s, fill 0.4s;
+  cursor: pointer;
 }
 .main_shop--right-sort > span {
   font-weight: 500;
@@ -1868,6 +1872,41 @@ header {
 .main_shop--right-sort > figure svg {
   padding: 8px;
   width: 100%;
+}
+
+.main_shop--right-sortBtn {
+  position: absolute;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  flex-direction: column;
+  gap: 20px;
+  top: 60px;
+  left: -75px;
+  z-index: 1;
+  width: 300px;
+  padding: 20px;
+  background-color: #fff;
+  color: #001952;
+  border-radius: 5px;
+  box-shadow: 1px 5px 15px rgba(51, 51, 51, 0.5);
+  cursor: pointer;
+}
+.main_shop--right-sortBtn span {
+  transition: color 0.2s;
+}
+.main_shop--right-sortBtn span:hover {
+  color: #f58322;
+}
+
+.visibility {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.not_product {
+  padding: 50px;
+  font-size: 10rem;
 }
 
 /*# sourceMappingURL=stytel.css.map */
