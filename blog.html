@@ -31,7 +31,12 @@
     </main>
     <div id="footer"></div>
   </body>
-
+  <script>
+    function viewBlogDetails(blog) {
+      localStorage.setItem("selectedBlog", JSON.stringify(blog));
+      window.location.href = "blog-details.html";
+    }
+  </script>
   <script src="./assets/javascripts/renderBlog.js"></script>
   <script type="module" src="./assets/javascripts/renderCategory.js"></script>
 </html>

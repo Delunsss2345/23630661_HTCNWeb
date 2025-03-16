@@ -323,67 +323,71 @@
       },
     ];
 
+    // Lưu dữ liệu vào localStorage nếu chưa có
+    if (!localStorage.getItem("blogList")) {
+      localStorage.setItem("blogList", JSON.stringify(blogList));
+    }
+
+    // Lấy danh sách blog từ localStorage
+    function getBlogList() {
+      return JSON.parse(localStorage.getItem("blogList")) || [];
+    }
+
+    // Lấy ID từ URL
     function getProductIdFromUrl() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get("id");
     }
 
+    // Tìm bài viết theo ID
     function getProductById(id) {
-      return blogList.find((blog) => blog.id == id);
+      return getBlogList().find((blog) => blog.id == id);
     }
+
+    // Hiển thị chi tiết bài viết
     function renderBlogDetails() {
       const blogId = getProductIdFromUrl();
       const blog = getProductById(blogId);
-      console.log(blog);
 
-      const blogDetail = document.querySelector(".main_blog--detail-href");
-      blogDetail.innerHTML = `Home / <a href="#!">${blog.tags[0]}</a> / <strong>${blog.title}</strong>`;
+      if (!blog) {
+        console.error("Blog not found!");
+        return;
+      }
 
-      const blogTagGrs = document.querySelector(
-        ".main_blog--detail-category-group"
-      );
-      let listTagName = "";
-      listTagName += blog.tags
-        .map(
-          (tag) => `<p href="#!" class="main_blog--detail-category">${tag}</p>`
-        )
-        .join(" ");
+      document.querySelector(
+        ".main_blog--detail-href"
+      ).innerHTML = `Home / <a href="#!">${blog.tags[0]}</a> / <strong>${blog.title}</strong>`;
 
-      blogTagGrs.innerHTML = `
-        ${listTagName}
-      `;
+      document.querySelector(".main_blog--detail-category-group").innerHTML =
+        blog.tags
+          .map(
+            (tag) =>
+              `<p href="#!" class="main_blog--detail-category">${tag}</p>`
+          )
+          .join(" ");
 
-      const blogTitle = document.querySelector(".main_blog--detail > h1");
-      blogTitle.innerHTML = blog.title;
+      document.querySelector(".main_blog--detail > h1").innerHTML = blog.title;
+      document.querySelector(
+        ".main_blog--detail-author"
+      ).innerHTML = `Written by ${blog.author}`;
+      document.querySelector(".blog-detail-content-title").innerHTML =
+        blog.shortDescription;
+      document.querySelector(".blog-detail-content-maxim > p").innerHTML =
+        blog.quote;
 
-      const blogAuthor = document.querySelector(".main_blog--detail-author");
-      blogAuthor.innerHTML = `Written by ${blog.author}`;
+      document.querySelector(".blog-detail-content-tag").innerHTML = `
+    <span> Tags:</span> 
+    ${blog.tags
+      .map((tag) => `<div class="blog-detail-list-tag"><p>${tag}</p></div>`)
+      .join("")}
+  `;
 
-      const blogTitleExtra = document.querySelector(
-        ".blog-detail-content-title"
-      );
-
-      blogTitleExtra.innerHTML = blog.shortDescription;
-
-      const blogMaxim = document.querySelector(
-        ".blog-detail-content-maxim > p"
-      );
-      blogMaxim.innerHTML = blog.quote;
-
-      let listTagNames = blog.tags
-        .map((tag) => `<div class="blog-detail-list-tag"><p>${tag}</p></div>`)
-        .join("");
-
-      const blogTag = document.querySelector(".blog-detail-content-tag");
-      blogTag.innerHTML = `
-  <span> Tags:</span> 
-  ${listTagNames}
-`;
-
-      const blogImg = document.querySelector(".main_blog--detail figure");
-      blogImg.innerHTML = `<img src="${blog.image}" />`;
+      document.querySelector(
+        ".main_blog--detail figure"
+      ).innerHTML = `<img src="${blog.image}" />`;
     }
 
+    // Gọi hàm hiển thị bài viết
     renderBlogDetails();
   </script>
 

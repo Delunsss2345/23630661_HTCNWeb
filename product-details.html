@@ -487,40 +487,67 @@
       },
     ];
 
-    function getProductIdFromUrl() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get("id");
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+      function getProductIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("id");
+      }
 
-    function getProductById(id) {
-      return productList.find((product) => product.id == id);
-    }
+      function getProductById(id) {
+        return productList.find((product) => product.id == id);
+      }
 
-    function renderProductDetails() {
-      const productId = getProductIdFromUrl();
-      const product = getProductById(productId);
+      function saveProductToLocalStorage(product) {
+        localStorage.setItem("selectedProduct", JSON.stringify(product));
+      }
 
-      const hrefProduct = document.querySelector(".main_product-details-href");
+      function getProductFromLocalStorage() {
+        return JSON.parse(localStorage.getItem("selectedProduct"));
+      }
 
-      hrefProduct.innerHTML = `
-        <p>Home / Shop / <span>${product.name}</span></p>
-      `;
+      function renderProductDetails() {
+        let product = getProductFromLocalStorage();
+        const productId = getProductIdFromUrl();
 
-      //main_product-details-name ,main_product-details-price main_product-details-img,main_product-details-extra
-      const imgExtra = document.querySelector(".main_product-details-extra");
-      const nameElement = document.querySelector(".main_product-details-name");
-      const priceElement = document.querySelector(
-        ".main_product-details-price"
-      );
-      const imgElement = document.querySelector(".main_product-details-img");
+        if (!product || product.id != productId) {
+          product = getProductById(productId);
+          if (product) {
+            saveProductToLocalStorage(product);
+          } else {
+            console.error("Sản phẩm không tồn tại!");
+            document.querySelector(".main_product-details-name").innerHTML =
+              "Sản phẩm không tìm thấy!";
+            return;
+          }
+        }
 
-      nameElement.innerHTML = `${product.name}`;
-      priceElement.innerHTML = `${product.price.toLocaleString("vi-VN")} VND`;
-      imgElement.innerHTML = `<img src="${product.img}" alt="">`;
-      imgExtra.innerHTML = `<img src="${product.img}" alt="">`;
-      console.log(hrefProduct);
-    }
+        // Lấy phần tử DOM
+        const hrefProduct = document.querySelector(
+          ".main_product-details-href"
+        );
+        const nameElement = document.querySelector(
+          ".main_product-details-name"
+        );
+        const priceElement = document.querySelector(
+          ".main_product-details-price"
+        );
+        const imgElement = document.querySelector(".main_product-details-img");
+        const imgExtra = document.querySelector(".main_product-details-extra");
 
-    renderProductDetails();
+        // Cập nhật nội dung
+        hrefProduct.innerHTML = `<p>Home / Shop / <span>${product.name}</span></p>`;
+        nameElement.textContent = product.name;
+
+        const price = Number(product.price) || 0;
+        priceElement.textContent = `${price.toLocaleString("vi-VN")} VND`;
+
+        imgElement.innerHTML = `<img src="${product.img}" alt="${product.name}">`;
+        imgExtra.innerHTML = `<img src="${
+          product.imgExtra || product.img
+        }" alt="${product.name}">`;
+      }
+
+      renderProductDetails();
+    });
   </script>
 </html>
