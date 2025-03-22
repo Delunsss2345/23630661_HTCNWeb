@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./assets/common/reset.css" />
+
+    <link rel="stylesheet" href="./assets/common/grid.css" />
+    <link rel="stylesheet" href="./assets/css/stytel.css" />
+
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./assets/javascripts/loadPage.js"></script>
+  </head>
+  <body>
+    <div id="header"></div>
+    <main>
+      <div class="primary_nav">
+        <h2>Wishlist</h2>
+        <div>
+          <a href="./index.html">Home </a>
+          <span>/</span>
+          <a href="./contact.html">Wishlist</a>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="list-favorite">
+          <p>There are no products on the Wishlist!</p>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </body>
+  <link
+    rel="stylesheet"
+    href="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"
+  />
+
+  <script>
+    let listFavorite = document.querySelector(".list-favorite");
+
+    let favorites = JSON.parse(localStorage.getItem("listFavorite") || "[]");
+
+    const renderFavorites = () => {
+      listFavorite.innerHTML = "";
+
+      favorites.forEach((item) => {
+        const productItem = document.createElement("div");
+        productItem.classList.add("favorite-item");
+
+        productItem.innerHTML = `
+        <figure style="margin:0;">
+            <img src="${item.img}" alt="${item.name}"  />
+        </figure>
+        <div class="favorite-info">
+            <h3>${item.name}</h3>
+            <p>Price: ${item.price.toLocaleString()} VND</p>
+            <p>Rate: ${"⭐".repeat(item.stars)}</p>
+        </div>
+
+        <div id="delete-favorite" class="favorite-delete" onclick="del(${
+          item.id
+        })">
+           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+        </div>
+       
+    `;
+
+        listFavorite.appendChild(productItem);
+      });
+    };
+
+    renderFavorites();
+
+    const del = (id) => {
+      favorites = favorites.filter((item) => item.id !== id);
+      localStorage.setItem("listFavorite", JSON.stringify(favorites));
+      renderFavorites();
+    };
+  </script>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="./assets/css/bootstrap-5.3.3-dist/css/bootstrap.css"
+    />
+    <title>Profile - Logged In</title>
+  </head>
+  <body>
+    <div class="container-xl container-lg">
+      <div class="profile pt-5 pb-3 d-flex justify-content-between">
+        <div class="d-flex gap-3 align-items-end">
+          <figure style="width: 250px; border-radius: 50%">
+            <img
+              style="width: 100%; border-radius: 50%"
+              src="./assets/img/user-unknow.png"
+              alt="Avatar"
+              class="profile-avatar"
+            />
+          </figure>
+          <div class="pb-5 ps-2">
+            <h3 class="fs-1 fw-bold" id="username">John Doe</h3>
+            <p class="fs-3 fw-normal fst-italic" id="email">
+              johndoe@example.com
+            </p>
+          </div>
+        </div>
+        <div class="d-flex gap-3">
+          <button
+            class="btn btn-dark rounded-circle"
+            style="width: 50px; height: 50px"
+          >
+            <svg
+              style="transform: translate(1.5px, -1px)"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              fill="#fff"
+            >
+              <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5V334.2H141.4V256h52.8V222.3c0-87.1 39.4-127.5 125-127.5c16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1c-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287V510.1C413.8 494.8 512 386.9 512 256h0z"
+              />
+            </svg>
+          </button>
+          <button
+            class="btn btn-dark rounded-circle"
+            style="width: 50px; height: 50px"
+          >
+            <svg
+              style="transform: translate(1px, -1px)"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              fill="#fff"
+            >
+              <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+              />
+            </svg>
+          </button>
+          <button
+            class="btn btn-dark rounded-circle"
+            style="width: 50px; height: 50px"
+          >
+            <svg
+              style="transform: translateX(-1px)"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              fill="#fff"
+            >
+              <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+              <path
+                d="M217.9 105.9L340.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L217.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1L32 320c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM352 416l64 0c17.7 0 32-14.3 32-32l0-256c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32l64 0c53 0 96 43 96 96l0 256c0 53-43 96-96 96l-64 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <span class="badge bg-warning text-dark">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-crown"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2 3a1 1 0 0 0-1 1v7.293a1 1 0 0 0 .293.707L4 14.707V13a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1.707l2.707-2.707A1 1 0 0 0 15 11.293V4a1 1 0 0 0-1-1H2z"
+            />
+          </svg>
+          VIP Member
+        </span>
+        <span class="badge bg-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-shield"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M5.072 1.042a.5.5 0 0 1 .856 0l4.176 7.317a.5.5 0 0 1-.428.74H5.5a.5.5 0 0 1-.428-.74L5.072 1.042z"
+            />
+          </svg>
+          Veteran Member
+        </span>
+        <span class="badge bg-success">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-gem"
+            viewBox="0 0 16 16"
+          >
+            <path d="M3 0L0 5l8 11 8-11-3-5H3z" />
+          </svg>
+          Premium Member
+        </span>
+        <span class="badge bg-info text-dark">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-star"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 .25a.5.5 0 0 1 .444.276l2.106 4.385 4.876.707a.5.5 0 0 1 .277.852l-3.531 3.446.833 4.85a.5.5 0 0 1-.726.527L8 12.347l-4.374 2.296a.5.5 0 0 1-.726-.527l.833-4.85L.202 6.17a.5.5 0 0 1 .277-.852l4.876-.707L7.556.526A.5.5 0 0 1 8 .25z"
+            />
+          </svg>
+          Star Member
+        </span>
+        <span class="badge bg-dark">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-person"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2 1a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a2 2 0 0 1 2-2h6z"
+            />
+          </svg>
+          Regular Member
+        </span>
+      </div>
+
+      <div
+        class="mt-4 p-4"
+        style="background-color: #f4f4f9; border-radius: 12px"
+      >
+        <!-- Email -->
+        <p
+          class="d-flex align-items-center mb-3"
+          style="font-size: 1.3rem; font-weight: 500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="currentColor"
+            class="me-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm13.5-1h-11L8 7.314 13.5 3zM1 5.383v6.787l4.904-3.393L1 5.383zm1.106.45L8 9.586l5.894-3.753L8 2.414 2.106 5.834zM15 5.383l-4.904 3.394L15 12.17V5.383z"
+            />
+          </svg>
+          <strong>Email:</strong> example@gmail.com
+        </p>
+
+        <!-- Phone -->
+        <p
+          class="d-flex align-items-center mb-3"
+          style="font-size: 1.3rem; font-weight: 500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="currentColor"
+            class="me-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.654 1.328a.678.678 0 0 1 .797-.52l2.347.468c.15.03.283.11.38.22l1.28 1.488a.678.678 0 0 1-.086.949l-1.099.91a1.745 1.745 0 0 0-.487 1.544c.262 1.048.905 2.186 1.94 3.221 1.036 1.035 2.174 1.678 3.222 1.94.52.13 1.06-.025 1.544-.487l.91-1.099a.678.678 0 0 1 .949-.086l1.488 1.28c.109.097.19.23.22.38l.468 2.347a.678.678 0 0 1-.52.797c-1.6.3-3.22.001-4.773-.861-1.443-.797-2.877-2.23-4.373-4.373C2.229 6.872.796 5.438 0 3.996c-.862-1.553-1.162-3.173-.861-4.773z"
+            />
+          </svg>
+          <strong>Phone:</strong> +123 456 7890
+        </p>
+
+        <!-- Bio -->
+        <p
+          class="d-flex align-items-center mb-3"
+          style="font-size: 1.3rem; font-weight: 500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="currentColor"
+            class="me-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM1 4v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm4 3h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"
+            />
+          </svg>
+          <strong>Bio:</strong> Passionate developer with a love for coding.
+        </p>
+
+        <!-- Address -->
+        <p
+          class="d-flex align-items-center mb-3"
+          style="font-size: 1.3rem; font-weight: 500"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            fill="currentColor"
+            class="me-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M4.146 7.354a.5.5 0 0 1 .708-.708L8 9.793l3.146-3.147a.5.5 0 1 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5z"
+            />
+            <path
+              d="M8 1a5 5 0 0 1 5 5c0 1.657-.832 3.376-2.346 5.07a16.493 16.493 0 0 1-2.233 2.279.375.375 0 0 1-.442 0 16.493 16.493 0 0 1-2.233-2.279C3.832 9.376 3 7.657 3 6a5 5 0 0 1 5-5z"
+            />
+          </svg>
+          <strong>Address:</strong> 123 Example Street, City, Country
+        </p>
+      </div>
+
+      <div
+        class="mt-4 p-3"
+        style="
+          background-color: #f4f4f9;
+          border-radius: 12px;
+          display: flex;
+          justify-content: center;
+          gap: 40px;
+        "
+      >
+        <!-- Help Icon -->
+        <div
+          class="d-flex flex-column align-items-center"
+          data-bs-toggle="modal"
+          data-bs-target="#helpModal"
+          style="cursor: pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="currentColor"
+            class="mb-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 0a8 8 0 1 0 8 8A8 8 0 0 0 8 0Zm.93 12.59c-.26.26-.62.41-.93.41s-.67-.15-.93-.41a1.34 1.34 0 0 1 0-1.86 1.32 1.32 0 0 1 1.86 0 1.34 1.34 0 0 1 0 1.86ZM9 5.5c0 .45-.3.83-.72.94a.687.687 0 0 0-.53.66v.9a.5.5 0 0 1-1 0v-.9c0-.95.67-1.75 1.59-1.97A1 1 0 1 0 9 5.5Z"
+            />
+          </svg>
+          <p style="font-size: 1.2rem; font-weight: 500">Help</p>
+        </div>
+
+        <!-- Contact Icon -->
+        <div class="d-flex flex-column align-items-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40"
+            height="40"
+            fill="currentColor"
+            class="mb-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.654 1.328a.678.678 0 0 1 .797-.52l2.347.468c.15.03.283.11.38.22l1.28 1.488a.678.678 0 0 1-.086.949l-1.099.91a1.745 1.745 0 0 0-.487 1.544c.262 1.048.905 2.186 1.94 3.221 1.036 1.035 2.174 1.678 3.222 1.94.52.13 1.06-.025 1.544-.487l.91-1.099a.678.678 0 0 1 .949-.086l1.488 1.28c.109.097.19.23.22.38l.468 2.347a.678.678 0 0 1-.52.797c-1.6.3-3.22.001-4.773-.861-1.443-.797-2.877-2.23-4.373-4.373C2.229 6.872.796 5.438 0 3.996c-.862-1.553-1.162-3.173-.861-4.773Z"
+            />
+          </svg>
+          <p style="font-size: 1.2rem; font-weight: 500">Contact</p>
+        </div>
+      </div>
+
+      <!-- Help Modal -->
+      <div
+        class="modal fade"
+        id="helpModal"
+        tabindex="-1"
+        aria-labelledby="helpModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-4" id="helpModalLabel">
+                Bạn cần tư vấn gì?
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder="Nhập nội dung cần hỗ trợ..."
+              ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Đóng
+              </button>
+              <button type="button" class="btn btn-primary">Gửi</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+  <script>
+    localStorage.setItem("isLoggedIn", "false");
+  </script>
+</html>

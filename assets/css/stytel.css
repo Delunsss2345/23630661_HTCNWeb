@@ -8,6 +8,10 @@ button {
   border: none;
 }
 
+.btn-none {
+  display: none !important;
+}
+
 .btn-primary {
   padding: 20px 50px;
   background: #001952;
@@ -2163,6 +2167,62 @@ header {
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
   filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(200deg);
+}
+
+.list-favorite {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.favorite-item {
+  display: flex;
+  gap: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 5px rgba(51, 51, 51, 0.8);
+}
+.favorite-item figure {
+  width: 220px;
+  height: 100%;
+}
+.favorite-item figure img {
+  width: 100%;
+  height: 100%;
+}
+
+.favorite-info {
+  padding: 30px;
+}
+.favorite-info h3 {
+  font-size: 3.4rem;
+  font-weight: 500;
+  color: #0a214f;
+  margin-bottom: 20px;
+}
+.favorite-info p {
+  font-size: 2.8rem;
+  margin-top: 20px;
+}
+
+.favorite-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(10, 33, 79, 0.9);
+  width: 230px;
+  margin-left: auto;
+  transition: opacity 0.4s;
+  cursor: pointer;
+}
+.favorite-delete:hover {
+  opacity: 0.8;
+}
+.favorite-delete:hover svg {
+  scale: 1.1;
+}
+.favorite-delete svg {
+  transition: scale 0.4s;
+  width: 18%;
 }
 
 /*# sourceMappingURL=stytel.css.map */

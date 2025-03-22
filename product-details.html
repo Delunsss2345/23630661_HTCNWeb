@@ -7,7 +7,12 @@
       content="width=device-width, initial-scale=1.0 max-width=0.8"
     />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./assets/css/bootstrap-5.3.3-dist/css/bootstrap.css"
+    />
     <link rel="stylesheet" href="./assets/common/reset.css" />
+
     <link rel="stylesheet" href="./assets/common/grid.css" />
     <link rel="stylesheet" href="./assets/css/stytel.css" />
 
@@ -128,19 +133,25 @@
                       </p>
 
                       <div class="main_product-details-action">
-                        <div class="main_product-details-btn-numbers-product">
-                          <span>-</span>
-                          <span>1</span>
-                          <span>+</span>
+                        <div
+                          style="user-select: none"
+                          class="main_product-details-btn-numbers-product"
+                        >
+                          <button onclick="decreaseQuantity()">-</button>
+                          <span id="quantity">1</span>
+                          <button onclick="increaseQuantity()">+</button>
                         </div>
-                        <button class="main_product-details-btn-preOder">
+                        <button
+                          id="submit-preOrder"
+                          class="main_product-details-btn-preOder"
+                        >
                           <span class="sora-bold">Pre-Order</span>
                         </button>
                       </div>
 
                       <div class="main_product-details-shareGroup">
                         <div class="main_product-details-btn">
-                          <button>
+                          <button id="btn-favorite" onclick="addFavorite()">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 512 512"
@@ -269,9 +280,32 @@
       </div>
     </main>
     <div id="footer"></div>
+
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Thông báo</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">Đây là message thông báo trôi lên!</div>
+      </div>
+    </div>
   </body>
 
   <script>
+    const btnFv = document.getElementById("btn-favorite");
+
     const productList = [
       {
         id: 1,
@@ -279,6 +313,7 @@
         price: 300000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/product_id1x2.png",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -288,6 +323,7 @@
         price: 32000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/smart_dish.jpg",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -297,6 +333,7 @@
         price: 260000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/pro-7-600x720.jpg",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -306,6 +343,7 @@
         price: 145000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/royacanin.jpg",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -315,6 +353,7 @@
         price: 250000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/pro-34-600x720.jpg",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -324,6 +363,7 @@
         price: 99000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/pro-3-600x720.jpg",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -333,6 +373,7 @@
         price: 90000,
         stars: 5,
         isHot: 1,
+        quantity: 1,
         img: "./assets/img/pro-8-600x720.jpg",
         imgExtra: "./assets/img/product_id1.jpg",
       },
@@ -342,6 +383,7 @@
         category: "Latest Product",
         name: "Spot Holiday Gingerbread Catnip",
         price: "470.79",
+        quantity: 1,
         img: "./assets/img/SpotHolidayGingerbreadCatnip.jpg",
       },
       {
@@ -349,6 +391,7 @@
         category: "Latest Product",
         name: "Spot Holiday Summer Catnip Toys",
         price: "345.99",
+        quantity: 1,
         img: "./assets/img/SpotHolidaySummerCatnipToys.jpg",
       },
       {
@@ -356,6 +399,7 @@
         category: "Latest Product",
         name: "Kaytee Iglgoo Giant Hideout For Small Animals",
         price: "435.21",
+        quantity: 1,
         img: "./assets/img/pro-8-600x720.jpg",
       },
       {
@@ -363,6 +407,7 @@
         category: "Latest Product",
         name: "Natural Balance Limited Ingredient Grain Free Sweet",
         price: "158.59",
+        quantity: 1,
         img: "./assets/img/pro-30-600x720.jpg",
       },
 
@@ -372,6 +417,7 @@
         category: "Top Rating",
         name: "Supper Fruit Cocktail Bird Treat Flavor Treat",
         price: "472.60",
+        quantity: 1,
         img: "./assets/img/pro-31-2-600x720.jpg",
       },
       {
@@ -379,6 +425,7 @@
         category: "Top Rating",
         name: "Messy Mutts Pet Hair & Lint Rollers Travel Size",
         price: "298.92",
+        quantity: 1,
         img: "./assets/img/pro-35-600x720.jpg",
       },
       {
@@ -386,6 +433,7 @@
         category: "Top Rating",
         name: "Tetra Whisper Bio Bag Disposable Filter Cartridges",
         price: "380.88",
+        quantity: 1,
         img: "./assets/img/pro-38-600x720.jpg",
       },
       {
@@ -393,6 +441,7 @@
         category: "Top Rating",
         name: "Exotic Environment Sunken Orb Floral Aquarium Ornament",
         price: "435.78",
+        quantity: 1,
         img: "./assets/img/pro-18-1-600x720.jpg",
       },
 
@@ -402,6 +451,7 @@
         category: "Best Seller",
         name: "Zunkel Schawarz Hill'S Science Diet Adult Perfect Digestion",
         price: "481.80",
+        quantity: 1,
         img: "./assets/img/pro-24-600x720.jpg",
       },
       {
@@ -409,6 +459,7 @@
         category: "Best Seller",
         name: "Earth Animal No Hide Rawhide Alternative Dog Treat Chew",
         price: "374.99",
+        quantity: 1,
         img: "./assets/img/pro-28-600x720.jpg",
       },
       {
@@ -416,6 +467,7 @@
         category: "Best Seller",
         name: "Natural Balance Limited Ingredient Grain Free Sweet",
         price: "107.61",
+        quantity: 1,
         img: "./assets/img/pro-13-1-600x720.jpg",
       },
       {
@@ -423,6 +475,7 @@
         category: "Best Seller",
         name: "American Cat Club Buffalo Plaid Holiday Cat Scratchers",
         price: "244.35",
+        quantity: 1,
         img: "./assets/img/pro-14-1-600x720.jpg",
       },
 
@@ -432,6 +485,7 @@
         category: "Featured Products",
         name: "A&E Cage Happy Beaks Ball Thing Bird Toy",
         price: "429.19",
+        quantity: 1,
         img: "./assets/img/pro-2-600x720.jpg",
       },
       {
@@ -439,6 +493,7 @@
         category: "Featured Products",
         name: "Brown'S Encore Farm Fresh Fixins Flaked Cereal Treat",
         price: "227.05",
+        quantity: 1,
         img: "./assets/img/product-600x720.jpg",
       },
       {
@@ -446,6 +501,7 @@
         category: "Featured Products",
         name: "Maplestick Chew Toy Durable Dog Chew Toy Bacon",
         price: "395.99",
+        quantity: 1,
         img: "./assets/img/pro-34-600x720.jpg",
       },
       {
@@ -453,6 +509,7 @@
         category: "Featured Products",
         name: "Zoo Med Front Opening Terrarium Reptile Enclosure",
         price: "332.62",
+        quantity: 1,
         img: "./assets/img/pro-22-600x720.jpg",
       },
 
@@ -462,6 +519,7 @@
         category: "All Items",
         name: "Tetrapro Tropical Crisps Animal Food",
         price: "199.99",
+        quantity: 1,
         img: "./assets/img/smart_dish.jpg",
       },
       {
@@ -469,6 +527,7 @@
         category: "All Items",
         name: "Dried Soldierworms 2.2 Oz Reptile Food",
         price: "299.49",
+        quantity: 1,
         img: "./assets/img/pro-13-1-600x720.jpg",
       },
       {
@@ -476,6 +535,7 @@
         category: "All Items",
         name: "Maplestick Chew Toy Durable Dog Chew Toy Bacon",
         price: "359.99",
+        quantity: 1,
         img: "./assets/img/pro-34-600x720.jpg",
       },
       {
@@ -483,20 +543,19 @@
         category: "All Items",
         name: "American Cat Club Buffalo Plaid Holiday Cat Scratchers",
         price: "489.00",
+        quantity: 1,
         img: "./assets/img/pro-14-1-600x720.jpg",
       },
     ];
+    function getProductIdFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("id");
+    }
+    function getProductById(id) {
+      return productList.find((product) => product.id == id);
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
-      function getProductIdFromUrl() {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get("id");
-      }
-
-      function getProductById(id) {
-        return productList.find((product) => product.id == id);
-      }
-
       function saveProductToLocalStorage(product) {
         localStorage.setItem("selectedProduct", JSON.stringify(product));
       }
@@ -549,5 +608,66 @@
 
       renderProductDetails();
     });
+
+    const addFavorite = () => {
+      if (btnFv.style.backgroundColor === "rgb(245, 131, 34)") {
+        return;
+      }
+
+      let data = JSON.parse(localStorage.getItem("listFavorite")) || [];
+
+      if (!Array.isArray(data)) {
+        data = [];
+      }
+
+      let value = getProductById(getProductIdFromUrl());
+
+      let checkValue = data.find((item) => item.id === getProductIdFromUrl());
+
+      if (!checkValue) {
+        data.push(value);
+        localStorage.setItem("listFavorite", JSON.stringify(data));
+      }
+
+      btnFv.style.backgroundColor = "#f58322";
+      btnFv.style.fill = "#fff";
+    };
+
+    let ds = JSON.parse(localStorage.getItem("listFavorite"));
+    let value = ds.find((item) => item.id == getProductIdFromUrl());
+    if (value) {
+      btnFv.style.backgroundColor = "#f58322";
+      btnFv.style.fill = "#fff";
+    }
+
+    let quantity = 1;
+
+    function increaseQuantity() {
+      document.getElementById("quantity").innerHTML = ++quantity;
+    }
+
+    function decreaseQuantity() {
+      if (quantity > 1) {
+        document.getElementById("quantity").innerHTML = --quantity;
+      }
+    }
+
+    const ptnPre = document.getElementById("submit-preOrder");
+
+    ptnPre.addEventListener("click", () => {
+      let product = getProductById(getProductIdFromUrl());
+      let data = JSON.parse(localStorage.getItem("listCart")) || [];
+      let existingProduct = data.find((item) => item.id === product.id);
+
+      if (existingProduct) {
+        existingProduct.quantity = parseInt(existingProduct.quantity) + 1;
+      } else {
+        product.quantity = 1;
+        data.push(product);
+      }
+
+      localStorage.setItem("listCart", JSON.stringify(data));
+    });
   </script>
+  <script src="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
 </html>
