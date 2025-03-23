@@ -1,7 +1,8 @@
+
 const loginBtn = document.getElementById('form_login--login');
+const resBtn = document.getElementById('form_login--res');
 const listLogin = document.querySelectorAll('.form_login--content');
 const listLoginBtn = document.querySelectorAll('.form_login-click');
-
 
 loginBtn.onclick = () => {
     listLogin.forEach(it => it.classList.remove('hidden_form'));
@@ -10,8 +11,6 @@ loginBtn.onclick = () => {
     listLoginBtn[0].classList.add('hidden_form');
 };
 
-
-const resBtn = document.getElementById('form_login--res');
 resBtn.onclick = () => {
     listLogin.forEach(it => it.classList.remove('hidden_form'));
     listLoginBtn.forEach(it => it.classList.remove('hidden_form'));
@@ -19,118 +18,119 @@ resBtn.onclick = () => {
     listLoginBtn[1].classList.add('hidden_form');
 };
 
-let forms = document.querySelectorAll(".form_login--content") ; 
-const validateEmail = (email) => {
-    const regEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regEmail.test(email.value.trim());
-  };
 
-const validateName = (name) => {
-    const regName = /^[A-Z][a-z]+(\s[A-Z][a-z]*)*$/ ; 
-    return regName.test(name.value.trim()) ; 
-}
-  
-  const checkValidate = (email, password, name = "none") => {
+const validateEmail = email => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email.value.trim());
+const validateName = name => /^[A-Z][a-z]+(\s[A-Z][a-z]*)*$/.test(name.value.trim());
+const validatePhone = phone => /^\d{10}$/.test(phone.value.trim());
+const validatePassword = password => password.value.trim().length >= 6;
+const validateDate = date => {
+    const inputDate = new Date(date.value);
+    const currentDate = new Date();
+    const age = currentDate.getFullYear() - inputDate.getFullYear();
+    return age >= 10;
+};
+
+const checkValidate = (email, password, name = null, phone = null, date = null) => {
     let isValid = true;
-  
 
-    
-    if (email.value.trim() === "" || password.value.trim() === "") {
-        return false;
-    }
-    
-  
     if (!validateEmail(email)) {
-      email.classList.add("is-invalid");
-      email.classList.remove("is-valid");
-      isValid = false;
-    } else {
-      email.classList.remove("is-invalid");
-      email.classList.add("is-valid");
-    }
-  
-    if (password.value.trim().length < 6) {
-      password.classList.add("is-invalid");
-      password.classList.remove("is-valid");
-      isValid = false;
-    } else {
-      password.classList.remove("is-invalid");
-      password.classList.add("is-valid");
-    }
-  
-    if (name != "none" && !validateName(name)) {
-        name.classList.add("is-invalid");
-        name.classList.remove("is-valid");
+        email.classList.add('is-invalid');
         isValid = false;
-    } else if(name != "none") {
-        name.classList.remove("is-invalid");
-        name.classList.add("is-valid");
+    } else {
+        email.classList.remove('is-invalid');
     }
-    
-  
+
+    if (!validatePassword(password)) {
+        password.classList.add('is-invalid');
+        isValid = false;
+    } else {
+        password.classList.remove('is-invalid');
+    }
+
+    if (date && !validateDate(date)) {
+        date.classList.add('is-invalid');
+        isValid = false;
+    } else if (date) {
+        date.classList.remove('is-invalid');
+    }
+
+    if (name && !validateName(name)) {
+        name.classList.add('is-invalid');
+        isValid = false;
+    } else if (name) {
+        name.classList.remove('is-invalid');
+    }
+
+    if (phone && !validatePhone(phone)) {
+        phone.classList.add('is-invalid');
+        isValid = false;
+    } else if (phone) {
+        phone.classList.remove('is-invalid');
+    }
+
     return isValid;
-  };
-  
-  let cnt = 0;
+};
 
-  const createUserObject = (email, password, name) => {
-      const user = {
-          id: cnt++,
-          name: name.value.trim(),
-          email: email.value.trim(),
-          password: password.value.trim(),
-      };
-  
-      let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-      registeredUsers.push(user);
-      localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
-  
-      console.log("Đã lưu thông tin đăng ký vào localStorage:", user);
-  };
-  
-const btnSubmit = document.getElementById("btn-submit-all");
+let cnt = 0;
 
-  btnSubmit.addEventListener("click", (e) => {
-      e.preventDefault(); 
-  
-      let emailSignUp = document.querySelector("#emailSignUp");
-      let passwordSignUp = document.querySelector("#passwordSignUp");
-      let name = document.querySelector("#fullName");
-  
-      let emailLogin = document.querySelector("#email");
-      let passwordLogin = document.querySelector("#passwordLogin");
-  
-      let forms = document.querySelectorAll(".form_login--content");
-  
-      forms.forEach((form) => {
-          if (!form.classList.contains("hidden_form")) {
-              if (form.id === "signUpForm") {
-                  if (checkValidate(emailSignUp, passwordSignUp, name)) {
-                      console.log("Đăng ký thành công!");
-                      createUserObject(emailSignUp, passwordSignUp, name);
-                  } else {
-                      console.log("Đăng ký không thành công!");
-                  }
-              } else if (form.id === "loginFormContent") {
-                  if (checkValidate(emailLogin, passwordLogin)) {
-                      let registeredUsers = JSON.parse(localStorage.getItem("registeredUsers")) || [];
-                      let userFound = registeredUsers.find(user =>
-                          user.email === emailLogin.value.trim() &&
-                          user.password === passwordLogin.value.trim()
-                      );
-  
-                      if (userFound) {
-                        localStorage.setItem("isLoggedIn", "true"); 
-                                          
-                        console.log("Đăng nhập thành công!");
-                      } else {
-                          console.log("Email hoặc mật khẩu không đúng!");
-                      }
-                  } else {
-                      console.log("Đăng nhập không thành công!");
-                  }
-              }
-          }
-      });
-  });
 
+const createUserObject = (email, password, name, phone, date) => {
+    const user = {
+        id: cnt++,
+        name: name.value.trim(),
+        email: email.value.trim(),
+        password: password.value.trim(),
+        phone: phone.value.trim(),
+        date: Date(date.value.trim()) 
+    };
+    console.log(user) ; 
+    let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    registeredUsers.push(user);
+    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+};
+
+
+const btnSubmit = document.getElementById('btn-submit-all');
+
+btnSubmit.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    let emailSignUp = document.querySelector('#emailSignUp');
+    let passwordSignUp = document.querySelector('#passwordSignUp');
+    let name = document.querySelector('#fullName');
+    let phone = document.querySelector('#phone');
+    let date = document.querySelector('#dateSignUp');
+
+    let emailLogin = document.querySelector('#email');
+    let passwordLogin = document.querySelector('#passwordLogin');
+
+    listLogin.forEach((form) => {
+        if (!form.classList.contains('hidden_form')) {
+            if (form.id === 'signUpForm') {
+                if (checkValidate(emailSignUp, passwordSignUp, name, phone, date)) {
+                    createUserObject(emailSignUp, passwordSignUp, name, phone, date);
+                    alert('Đăng ký thành công!');
+                } else {
+                    alert('Thông tin đăng ký không hợp lệ!');
+                }
+            } else if (form.id === 'loginFormContent') {
+                if (checkValidate(emailLogin, passwordLogin)) {
+                    let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+                    let userFound = registeredUsers.find(user =>
+                        user.email === emailLogin.value.trim() &&
+                        user.password === passwordLogin.value.trim()
+                    );
+
+                    if (userFound) {
+                        localStorage.setItem('isLoggedIn', 'true');
+                        window.location.href = "./index.html"
+                    } else {
+                        alert('Email hoặc mật khẩu không đúng!');
+                    }
+                } else {
+                    alert('Thông tin đăng nhập không hợp lệ!');
+                }
+            }
+        }
+    });
+});

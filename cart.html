@@ -26,9 +26,15 @@
       </div>
 
       <div class="container">
-        <div class="list-favorite">
+        <div class="list-cart">
           <p>There are no products on the Cart!</p>
         </div>
+
+        <div id="into-money"></div>
+
+        <button id="btn-buy" class="btn-primary">
+          <span> Buy Now </span>
+        </button>
       </div>
     </main>
     <div id="footer"></div>
@@ -37,48 +43,65 @@
     rel="stylesheet"
     href="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"
   />
-
+  <link rel="stylesheet" href="./assets/javascripts/js.js" />
   <script>
-    let listFavorite = document.querySelector(".list-favorite");
+    let listCart = document.querySelector(".list-cart");
+    let allMoney = document.getElementById("into-money");
+    let carts = JSON.parse(localStorage.getItem("listCart") || "[]");
 
-    let favorites = JSON.parse(localStorage.getItem("listCart") || "[]");
+    const renderCart = () => {
+      listCart.innerHTML = "";
 
-    const renderFavorites = () => {
-      listFavorite.innerHTML = "";
-
-      favorites.forEach((item) => {
+      carts.forEach((item) => {
         const productItem = document.createElement("div");
-        productItem.classList.add("favorite-item");
+        productItem.classList.add("cart-item");
 
         productItem.innerHTML = `
-        <figure style="margin:0;">
-            <img src="${item.img}" alt="${item.name}"  />
-        </figure>
-        <div class="favorite-info">
-            <h3>${item.name}</h3>
-            <p>Price: ${item.price.toLocaleString()} VND</p>
-            <p>Rate: ${"⭐".repeat(item.stars)}</p>
-        </div>
+          <figure style="margin:0;">
+              <img src="${item.img}" alt="${item.name}"  />
+          </figure>
+          <div class="cart-info">
+              <h3>${item.name}</h3>
+              <p>Price: ${item.price.toLocaleString()} VND</p>
+              <p>Quantity: x ${item.quantity}</p>
+          </div>
 
-        <div id="delete-favorite" class="favorite-delete" onclick="del(${
-          item.id
-        })">
-           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
-        </div>
-       
-    `;
+          <div id="delete-cart" class="cart-delete" onclick="del(${item.id})">
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+          </div>
 
-        listFavorite.appendChild(productItem);
+      `;
+
+        listCart.appendChild(productItem);
       });
     };
 
-    renderFavorites();
-    console.log(favorites);
+    renderCart();
+    const buyAll = () => {
+      let money = 0;
+      carts.forEach((item) => {
+        money += item.quantity * Number.parseFloat(item.price);
+      });
 
+      allMoney.innerHTML = `<p class="total-all">Total All : ${money.toLocaleString()} VND</p>`;
+    };
+    buyAll();
+    console.log(carts);
+    function renderNumber() {
+      let data1 = JSON.parse(localStorage.getItem("listFavorite"));
+      let data2 = JSON.parse(localStorage.getItem("listCart"));
+      let listShowFavorite = document.querySelector(".extra-number.favorite");
+      let listShowCart = document.querySelector(".extra-number.cart");
+
+      listShowFavorite.innerHTML = `<p>${data1.length}</p>`;
+      listShowCart.innerHTML = `<p>${data2.length}</p>`;
+    }
     const del = (id) => {
-      favorites = favorites.filter((item) => item.id !== id);
-      localStorage.setItem("listCart", JSON.stringify(favorites));
-      renderFavorites();
+      carts = carts.filter((item) => item.id !== id);
+      localStorage.setItem("listCart", JSON.stringify(carts));
+      renderNumber();
+      renderCart();
+      buyAll();
     };
   </script>
 </html>

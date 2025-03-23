@@ -73,10 +73,19 @@
     };
 
     renderFavorites();
+    function renderNumber() {
+      let data1 = JSON.parse(localStorage.getItem("listFavorite"));
+      let data2 = JSON.parse(localStorage.getItem("listCart"));
+      let listShowFavorite = document.querySelector(".extra-number.favorite");
+      let listShowCart = document.querySelector(".extra-number.cart");
 
+      listShowFavorite.innerHTML = `<p>${data1.length}</p>`;
+      listShowCart.innerHTML = `<p>${data2.length}</p>`;
+    }
     const del = (id) => {
       favorites = favorites.filter((item) => item.id !== id);
       localStorage.setItem("listFavorite", JSON.stringify(favorites));
+      renderNumber();
       renderFavorites();
     };
   </script>

@@ -62,6 +62,7 @@
             </svg>
           </button>
           <button
+            id="logout-btn"
             class="btn btn-dark rounded-circle"
             style="width: 50px; height: 50px"
           >
@@ -338,6 +339,14 @@
   </body>
   <script src="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
   <script>
-    localStorage.setItem("isLoggedIn", "false");
+    if (localStorage.getItem("isLoggedIn") == "false") {
+      window.location.href = "./error404.html";
+    }
+
+    let btnLogout = document.getElementById("logout-btn");
+    btnLogout.addEventListener("click", (e) => {
+      localStorage.setItem("isLoggedIn", "false");
+      window.location.href = "./login.html";
+    });
   </script>
 </html>

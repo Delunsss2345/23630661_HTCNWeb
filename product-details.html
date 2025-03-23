@@ -609,6 +609,16 @@
       renderProductDetails();
     });
 
+    function renderNumber() {
+      let data1 = JSON.parse(localStorage.getItem("listFavorite"));
+      let data2 = JSON.parse(localStorage.getItem("listCart"));
+      let listShowFavorite = document.querySelector(".extra-number.favorite");
+      let listShowCart = document.querySelector(".extra-number.cart");
+
+      listShowFavorite.innerHTML = `<p>${data1.length}</p>`;
+      listShowCart.innerHTML = `<p>${data2.length}</p>`;
+    }
+
     const addFavorite = () => {
       if (btnFv.style.backgroundColor === "rgb(245, 131, 34)") {
         return;
@@ -631,6 +641,7 @@
 
       btnFv.style.backgroundColor = "#f58322";
       btnFv.style.fill = "#fff";
+      renderNumber();
     };
 
     let ds = JSON.parse(localStorage.getItem("listFavorite"));
@@ -667,6 +678,7 @@
       }
 
       localStorage.setItem("listCart", JSON.stringify(data));
+      renderNumber();
     });
   </script>
   <script src="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>

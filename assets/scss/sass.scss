@@ -2447,12 +2447,12 @@ header {
   }
   
 
-.list-favorite {
+.list-favorite,.list-cart {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
-.favorite-item {
+.favorite-item,.cart-item {
     display: flex; 
     gap: 20px;
     border: 1px solid #ccc;
@@ -2466,7 +2466,7 @@ header {
         }
     }
 }
-.favorite-info {
+.favorite-info,.cart-info {
     padding: 30px;
     h3 {
         font-size: 3.4rem;
@@ -2480,7 +2480,7 @@ header {
     }
 }
 
-.favorite-delete {
+.favorite-delete,.cart-delete {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2498,5 +2498,83 @@ header {
     svg {
         transition: scale 0.4s;
         width: 18%;
+    }
+}
+
+.total-all {
+    padding: 50px;
+    display: block;
+    text-align: right;
+    font-size: 3rem;
+    
+}
+
+#btn-buy {
+    display: block;
+    width: 250px;
+    padding: 30px;
+    border-radius: 20px;
+    margin-left: auto;
+    transition: opacity 0.5s , box-shadow 0.5s;
+    
+    &:hover {
+        opacity: 0.7;
+       box-shadow: 0px 0px 10px #0a0a0a;
+    }
+}
+
+.btn-add-extra {
+    position: relative;
+}
+.extra-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: -9px;
+    top: -8px;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background-color: #f58322;
+    p {
+        font-size:1.6rem;
+        font-weight: 600;
+        color: #fff;
+    }
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:30px;
+    width: 100vw;
+    height: 90vh;
+    > h1 {
+        font-size: 35rem;
+        color: #0a214f;
+        font-weight: 500;
+    }
+    > span {
+        font-size: 5rem;
+    }
+    p>  {
+        font-size: 2rem;
+    }
+    button {
+        margin-top: 20px;
+        border-radius: 64px;
+        padding: 25px 65px;
+        background-color: #ff782c;
+        transition: opacity 0.5s;
+       
+        span {
+            text-transform: none;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
     }
 }

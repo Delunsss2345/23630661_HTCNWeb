@@ -61,7 +61,10 @@
                 />
               </svg>
             </button>
-            <button onclick="window.location.href='./favorite.html'">
+            <button
+              class="btn-add-extra"
+              onclick="window.location.href='./favorite.html'"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -73,8 +76,12 @@
                   d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"
                 />
               </svg>
+              <div class="extra-number favorite"></div>
             </button>
-            <button  onclick="window.location.href='./cart.html'"">
+            <button
+              class="btn-add-extra"
+              onclick="window.location.href='./cart.html'"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -85,6 +92,7 @@
                   d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4z"
                 />
               </svg>
+              <div class="extra-number cart"></div>
             </button>
           </div>
         </div>
@@ -187,5 +195,16 @@
       btnLoginSuccess.classList.add("btn-none");
       btnLogin.classList.remove("btn-none");
     }
+    function renderNumber() {
+      let data1 = JSON.parse(localStorage.getItem("listFavorite"));
+      let data2 = JSON.parse(localStorage.getItem("listCart"));
+      let listShowFavorite = document.querySelector(".extra-number.favorite");
+      let listShowCart = document.querySelector(".extra-number.cart");
+
+      listShowFavorite.innerHTML = `<p>${data1.length}</p>`;
+      listShowCart.innerHTML = `<p>${data2.length}</p>`;
+    }
+
+    renderNumber();
   </script>
 </html>
