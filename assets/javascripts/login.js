@@ -121,8 +121,11 @@ btnSubmit.addEventListener('click', (e) => {
                         user.password === passwordLogin.value.trim()
                     );
 
+
+
                     if (userFound) {
                         localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('accountLogin' , JSON.stringify(userFound)) ; 
                         window.location.href = "./index.html"
                     } else {
                         alert('Email hoặc mật khẩu không đúng!');

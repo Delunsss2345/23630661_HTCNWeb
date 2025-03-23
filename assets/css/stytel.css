@@ -200,6 +200,7 @@ header {
   position: relative;
 }
 .header__nav--page:hover > .extra_menu-group-page {
+  display: block;
   visibility: visible;
   opacity: 1;
   transform: translateX(0);
