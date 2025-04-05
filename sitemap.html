@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SiteMap</title>
+    <link rel="stylesheet" href="./assets/common/reset.css" />
+    <link rel="stylesheet" href="./assets/common/grid.css" />
+    <link rel="stylesheet" href="./assets/css/stytel.css" />
+
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./assets/javascripts/loadPage.js"></script>
+    <style>
+      .sitemap-container {
+        margin: 4rem 0;
+        padding: 3rem;
+        background-color: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.08);
+      }
+
+      .sitemap-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .sitemap-list ul {
+        list-style: none;
+        padding-left: 4rem;
+        position: relative;
+      }
+
+      .sitemap-list ul:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 2rem;
+        height: 100%;
+        width: 0.2rem;
+        background: linear-gradient(to bottom, #eee, #ddd, #eee);
+      }
+
+      .sitemap-list li {
+        margin: 2rem 0;
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .sitemap-list li:before {
+        content: "";
+        position: absolute;
+        left: -0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: #007bff;
+        border-radius: 50%;
+      }
+
+      .sitemap-list li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        font-size: 2.2rem;
+        display: inline-block;
+        padding: 1rem 1.5rem;
+        border-radius: 0.6rem;
+      }
+
+      .sitemap-list li a:hover {
+        color: #fff;
+        background-color: #007bff;
+        transform: translateX(0.8rem);
+        box-shadow: 0 0.5rem 1.2rem rgba(0, 123, 255, 0.4);
+      }
+
+      .main-page > a {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #0056b3;
+        padding: 1.5rem 2rem;
+        background-color: #f0f7ff;
+        border-left: 0.6rem solid #007bff;
+      }
+
+      .main-page > a:hover {
+        background-color: #007bff;
+        color: white;
+      }
+
+      .sub-pages {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+      }
+
+      h1 {
+        font-size: 4rem;
+        margin-bottom: 3rem;
+        color: #0056b3;
+        position: relative;
+        padding-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      h1:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12rem;
+        height: 0.4rem;
+        background: linear-gradient(to right, #007bff, #00bfff);
+        border-radius: 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <main>
+      <div class="container">
+        <div class="sitemap_content">
+          <h1>Site Map</h1>
+
+          <div class="sitemap-container">
+            <ul class="sitemap-list">
+              <li class="main-page">
+                <a href="index.html">Home</a>
+                <ul class="sub-pages">
+                  <li><a href="contact.html">Contact</a></li>
+
+                  <!-- Shop Section -->
+                  <li>
+                    <a href="shop.html">Shop</a>
+                    <ul>
+                      <li>
+                        <a href="product-details.html">Product Details</a>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <!-- Blog Section -->
+                  <li>
+                    <a href="blog.html">Blog</a>
+                    <ul>
+                      <li><a href="blog_details.html">Blog Details</a></li>
+                    </ul>
+                  </li>
+
+                  <!-- Account Section -->
+                  <li>
+                    <a>Account</a>
+                    <ul>
+                      <li><a href="account.html">Profile</a></li>
+                      <li><a href="favorite.html">Favorite</a></li>
+                      <li><a href="cart.html">Cart</a></li>
+                    </ul>
+                  </li>
+
+                  <!-- Authentication Section -->
+                  <li>
+                    <a>Authentication</a>
+                    <ul>
+                      <li><a href="login.html">Login</a></li>
+                    </ul>
+                  </li>
+
+                  <!-- Error Page -->
+                  <li><a href="error404.html">Error 404</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </body>
+  <script src="./assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+</html>

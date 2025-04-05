@@ -3,15 +3,175 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Shopping Cart</title>
 
     <link rel="stylesheet" href="./assets/common/reset.css" />
-
     <link rel="stylesheet" href="./assets/common/grid.css" />
     <link rel="stylesheet" href="./assets/css/stytel.css" />
 
     <script src="./jquery-3.7.1.min.js"></script>
     <script src="./assets/javascripts/loadPage.js"></script>
+    <style>
+      /* Enhanced Payment Modal Styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+      }
+
+      .modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 30px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 450px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        animation: modalFadeIn 0.3s ease-out;
+      }
+
+      @keyframes modalFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .modal-header {
+        margin-bottom: 20px;
+      }
+
+      .modal-title {
+        font-size: 26px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+        font-weight: 600;
+      }
+
+      .payment-info {
+        margin: 20px 0;
+        font-size: 16px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .payment-amount {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: #2c3e50;
+        border: 1px solid #e9ecef;
+      }
+
+      .qr-code-container {
+        position: relative;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        padding: 15px;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e0e0e0;
+      }
+
+      .qr-code {
+        width: 100%;
+        height: 100%;
+      }
+
+      .qr-logo {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 8px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .qr-logo img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .payment-instructions {
+        margin: 20px 0;
+        font-size: 14px;
+        color: #666;
+      }
+
+      .payment-steps {
+        text-align: left;
+        margin: 15px 0;
+        padding-left: 20px;
+      }
+
+      .payment-steps li {
+        margin-bottom: 8px;
+      }
+
+      .close-modal {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 0.3s;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 200px;
+      }
+
+      .close-modal:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+      }
+
+      .payment-methods {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+
+      .payment-method {
+        width: 50px;
+        height: 30px;
+        object-fit: contain;
+        filter: grayscale(30%);
+        opacity: 0.7;
+        transition: all 0.3s;
+      }
+
+      .payment-method:hover {
+        filter: grayscale(0);
+        opacity: 1;
+      }
+    </style>
   </head>
   <body>
     <div id="header"></div>
@@ -27,14 +187,94 @@
 
       <div class="container">
         <div class="list-cart">
-          <p>There are no products on the Cart!</p>
+          <p>There are no products in your cart!</p>
         </div>
 
         <div id="into-money"></div>
 
         <button id="btn-buy" class="btn-primary">
-          <span> Buy Now </span>
+          <span> Proceed to Payment </span>
         </button>
+      </div>
+
+      <!-- Payment Modal -->
+      <div id="paymentModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title">Complete Your Payment</h3>
+            <div class="payment-info">
+              Scan the QR code below to pay securely
+            </div>
+          </div>
+
+          <div class="payment-amount" id="paymentAmount">
+            <!-- Payment amount will be inserted here -->
+          </div>
+
+          <div class="qr-code-container">
+            <!-- QR Code SVG with logo placeholder -->
+            <svg
+              class="qr-code"
+              viewBox="0 0 200 200"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="200" height="200" fill="#fff" />
+              <!-- QR Code Pattern -->
+              <rect x="20" y="20" width="160" height="160" fill="#000" />
+              <rect x="40" y="40" width="120" height="120" fill="#fff" />
+              <rect x="60" y="60" width="80" height="80" fill="#000" />
+              <rect x="80" y="80" width="40" height="40" fill="#fff" />
+              <rect x="90" y="90" width="20" height="20" fill="#000" />
+
+              <!-- Finder Patterns -->
+              <rect x="20" y="20" width="50" height="50" fill="#000" />
+              <rect x="130" y="20" width="50" height="50" fill="#000" />
+              <rect x="20" y="130" width="50" height="50" fill="#000" />
+            </svg>
+            <div class="qr-logo">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/196/196566.png"
+                alt="Logo"
+              />
+            </div>
+          </div>
+
+          <div class="payment-instructions">
+            <p>Please follow these steps to complete your payment:</p>
+            <ol class="payment-steps">
+              <li>Open your mobile banking/payment app</li>
+              <li>Select "Scan QR Code"</li>
+              <li>Point your camera at this code</li>
+              <li>Confirm the payment amount</li>
+              <li>Complete authentication</li>
+            </ol>
+          </div>
+
+          <div class="payment-methods">
+            <img
+              class="payment-method"
+              src="./assets/img/apple-pay-logo-svgrepo-com.svg"
+              alt="Visa"
+            />
+            <img
+              class="payment-method"
+              src="./assets/img/amazon-pay-svgrepo-com.svg"
+              alt="Visa"
+            />
+            <img
+              class="payment-method"
+              src="./assets/img/amex-svgrepo-com.svg"
+              alt="Visa"
+            />
+            <img
+              class="payment-method"
+              src="./assets/img/american-express-svgrepo-com.svg"
+              alt="Visa"
+            />
+          </div>
+
+          <button class="close-modal" onclick="closeModal()">Close</button>
+        </div>
       </div>
     </main>
     <div id="footer"></div>
@@ -48,9 +288,16 @@
     let listCart = document.querySelector(".list-cart");
     let allMoney = document.getElementById("into-money");
     let carts = JSON.parse(localStorage.getItem("listCart") || "[]");
+    const paymentModal = document.getElementById("paymentModal");
+    const paymentAmountElement = document.getElementById("paymentAmount");
 
     const renderCart = () => {
       listCart.innerHTML = "";
+
+      if (carts.length === 0) {
+        listCart.innerHTML = "<p>There are no products in your cart!</p>";
+        return;
+      }
 
       carts.forEach((item) => {
         const productItem = document.createElement("div");
@@ -58,50 +305,88 @@
 
         productItem.innerHTML = `
           <figure style="margin:0;">
-              <img src="${item.img}" alt="${item.name}"  />
+              <img src="${item.img}" alt="${item.name}" />
           </figure>
           <div class="cart-info">
               <h3>${item.name}</h3>
               <p>Price: ${item.price.toLocaleString()} VND</p>
-              <p>Quantity: x ${item.quantity}</p>
+              <p>Quantity: x${item.quantity}</p>
           </div>
-
           <div id="delete-cart" class="cart-delete" onclick="del(${item.id})">
-             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff"><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
           </div>
-
-      `;
+        `;
 
         listCart.appendChild(productItem);
       });
     };
 
-    renderCart();
-    const buyAll = () => {
-      let money = 0;
+    const calculateTotal = () => {
+      let total = 0;
       carts.forEach((item) => {
-        money += item.quantity * Number.parseFloat(item.price);
+        total += item.quantity * Number.parseFloat(item.price);
       });
-
-      allMoney.innerHTML = `<p class="total-all">Total All : ${money.toLocaleString()} VND</p>`;
+      return total;
     };
-    buyAll();
-    console.log(carts);
+
+    const updatePaymentAmount = () => {
+      const total = calculateTotal();
+      allMoney.innerHTML = `<p class="total-all">Total Amount: ${total.toLocaleString()} VND</p>`;
+
+      const formattedAmount = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "VND",
+        minimumFractionDigits: 0,
+      }).format(total);
+
+      paymentAmountElement.innerHTML = `
+        Payment Amount: <strong>${formattedAmount}</strong>
+      `;
+    };
+
+    renderCart();
+    updatePaymentAmount();
+
     function renderNumber() {
       let data1 = JSON.parse(localStorage.getItem("listFavorite"));
       let data2 = JSON.parse(localStorage.getItem("listCart"));
       let listShowFavorite = document.querySelector(".extra-number.favorite");
       let listShowCart = document.querySelector(".extra-number.cart");
 
-      listShowFavorite.innerHTML = `<p>${data1.length}</p>`;
-      listShowCart.innerHTML = `<p>${data2.length}</p>`;
+      listShowFavorite.innerHTML = `<p>${data1?.length || 0}</p>`;
+      listShowCart.innerHTML = `<p>${data2?.length || 0}</p>`;
     }
+
     const del = (id) => {
       carts = carts.filter((item) => item.id !== id);
       localStorage.setItem("listCart", JSON.stringify(carts));
       renderNumber();
       renderCart();
-      buyAll();
+      updatePaymentAmount();
+    };
+
+    document.getElementById("btn-buy").addEventListener("click", function () {
+      if (carts.length === 0) {
+        alert(
+          "Your cart is empty! Please add products before proceeding to payment."
+        );
+        return;
+      }
+
+      updatePaymentAmount();
+      paymentModal.style.display = "block";
+    });
+
+    // Close modal
+    function closeModal() {
+      paymentModal.style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function (event) {
+      if (event.target == paymentModal) {
+        paymentModal.style.display = "none";
+      }
     };
   </script>
 </html>
