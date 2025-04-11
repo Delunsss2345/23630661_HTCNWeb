@@ -8,6 +8,19 @@
     margin-right: auto;
 }
 
+:root {
+    --spacer: 5px;
+    /* Giá trị mặc định */
+}
+
+.container,
+.container *,
+.row,
+.row *,
+[class*="col-"] {
+    box-sizing: border-box;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -137,7 +150,7 @@
 /* Row child col */
 .row>[class*="col-"] {
     flex: 0 0 auto;
-    width: calc((100% / var(--column-numbers)) * var(--col-number));
+    width: calc(100% / var(--column-numbers) * var(--col-number));
     padding-left: calc(var(--spacer) / 2);
     padding-right: calc(var(--spacer) / 2);
 }
@@ -353,7 +366,7 @@
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .container {
-        max-width: 720x;
+        max-width: 720px;
         --spacer: 24px;
     }
 
